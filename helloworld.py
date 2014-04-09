@@ -1,15 +1,12 @@
 """A simple webapp2 server."""
 
+from google.appengine.api import users
+
 import webapp2
-
-
-class MainPage(webapp2.RequestHandler):
-
-    def get(self):
-        self.response.headers['Content-Type'] = 'text/plain'
-        self.response.write('Hello, World!')
-
+import SubPage
+import MainPage
 
 application = webapp2.WSGIApplication([
-    ('/', MainPage),
+    ('/', MainPage.MainPage),
+    ('/sub', SubPage.SubPage)
 ], debug=True)
